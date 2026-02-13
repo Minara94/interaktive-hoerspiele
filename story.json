@@ -7,64 +7,201 @@
 
   "stories": [
     {
-      "id": "story1",
-      "title": "Hörspiel 1",
+      "id": "krimi1",
+      "title": "Die letzte Spur",
       "start_scene": "intro",
+
       "scenes": {
         "intro": {
           "type": "decision",
           "title": "Einleitung",
           "background": "images/bg.jpg",
-          "narration": "audio/intro1.mp3",
-          "prompt": "Wie möchtest du fortfahren?",
-          "choice_a": { "label": "A", "next": "A" },
-          "choice_b": { "label": "B", "next": "B" }
+          "narration": "audio/intro.mp3",
+          "prompt": "Einleitung in die Story. Wie willst du vorgehen?",
+          "choice_a": { "label": "Möglichkeit A", "next": "A" },
+          "choice_b": { "label": "Möglichkeit B", "next": "B" }
         },
+
         "A": {
-          "type": "ending",
-          "title": "Ende A",
+          "type": "decision",
+          "title": "Strang A",
           "background": "images/bg.jpg",
-          "narration": "audio/endA1.mp3",
-          "ending_title": "Ende A",
-          "ending_text": "Das war Ende A."
+          "narration": "audio/A.mp3",
+          "prompt": "Entscheidung: Möglichkeit A",
+          "choice_a": { "label": "Möglichkeit A", "next": "AA" },
+          "choice_b": { "label": "Möglichkeit B", "next": "AB" }
         },
+
         "B": {
-          "type": "ending",
-          "title": "Ende B",
+          "type": "decision",
+          "title": "Strang B",
           "background": "images/bg.jpg",
-          "narration": "audio/endB1.mp3",
-          "ending_title": "Ende B",
-          "ending_text": "Das war Ende B."
+          "narration": "audio/B.mp3",
+          "prompt": "Entscheidung: Möglichkeit B",
+          "choice_a": { "label": "Möglichkeit A", "next": "BA" },
+          "choice_b": { "label": "Möglichkeit B", "next": "BB" }
+        },
+
+        "AA": {
+          "type": "decision",
+          "title": "Strang A-A",
+          "background": "images/bg.jpg",
+          "narration": "audio/AA.mp3",
+          "prompt": "2. Entscheidung - Strang A-A",
+          "choice_a": { "label": "Möglichkeit A", "next": "AAA" },
+          "choice_b": { "label": "Möglichkeit B", "next": "AAB" }
+        },
+
+        "AB": {
+          "type": "decision",
+          "title": "Strang A-B",
+          "background": "images/bg.jpg",
+          "narration": "audio/AB.mp3",
+          "prompt": "2. Entscheidung - Strang A-B",
+          "choice_a": { "label": "Möglichkeit A", "next": "ABA" },
+          "choice_b": { "label": "Möglichkeit B", "next": "ABB" }
+        },
+
+        "BA": {
+          "type": "decision",
+          "title": "Strang B-A",
+          "background": "images/bg.jpg",
+          "narration": "audio/BA.mp3",
+          "prompt": "2. Entscheidung - Strang B-A",
+          "choice_a": { "label": "Möglichkeit A", "next": "BAA" },
+          "choice_b": { "label": "Möglichkeit B", "next": "BAB" }
+        },
+
+        "BB": {
+          "type": "decision",
+          "title": "Strang B-B",
+          "background": "images/bg.jpg",
+          "narration": "audio/BB.mp3",
+          "prompt": "2. Entscheidung - Strang B-B",
+          "choice_a": { "label": "Möglichkeit A", "next": "BBA" },
+          "choice_b": { "label": "Möglichkeit B", "next": "BBB" }
+        },
+
+        "AAA": {
+          "type": "ending",
+          "title": "Strang A-A-A",
+          "background": "images/bg.jpg",
+          "narration": "audio/AAA_end.mp3",
+          "ending_title": "Strang A-A-A",
+          "ending_text": "StorylineEnde"
+        },
+
+        "AAB": {
+          "type": "ending",
+          "title": "Strang A-A-B",
+          "background": "images/bg.jpg",
+          "narration": "audio/AAB_end.mp3",
+          "ending_title": "Strang A-A-B",
+          "ending_text": "StorylineEnde"
+        },
+
+        "ABA": {
+          "type": "ending",
+          "title": "Strang A-B-A",
+          "background": "images/bg.jpg",
+          "narration": "audio/ABA_end.mp3",
+          "ending_title": "Strang A-B-A",
+          "ending_text": "StorylineEnde"
+        },
+
+        "ABB": {
+          "type": "ending",
+          "title": "Strang A-B-B",
+          "background": "images/bg.jpg",
+          "narration": "audio/ABB_end.mp3",
+          "ending_title": "Strang A-B-B",
+          "ending_text": "StorylineEnde"
+        },
+
+        "BAA": {
+          "type": "ending",
+          "title": "Strang B-A-A",
+          "background": "images/bg.jpg",
+          "narration": "audio/BAA_end.mp3",
+          "ending_title": "Strang B-A-A",
+          "ending_text": "StorylineEnde"
+        },
+
+        "BAB": {
+          "type": "ending",
+          "title": "Strang B-A-B",
+          "background": "images/bg.jpg",
+          "narration": "audio/BAB_end.mp3",
+          "ending_title": "Strang B-A-B",
+          "ending_text": "StorylineEnde"
+        },
+
+        "BBA": {
+          "type": "ending",
+          "title": "Strang B-B-A",
+          "background": "images/bg.jpg",
+          "narration": "audio/BBA_end.mp3",
+          "ending_title": "Strang B-B-A",
+          "ending_text": "StorylineEnde"
+        },
+
+        "BBB": {
+          "type": "ending",
+          "title": "Strang B-B-B",
+          "background": "images/bg.jpg",
+          "narration": "audio/BBB_end.mp3",
+          "ending_title": "Strang B-B-B",
+          "ending_text": "StorylineEnde"
         }
       }
     },
 
     {
       "id": "story2",
-      "title": "Hörspiel 2",
+      "title": "Hörspiel 2 (Platzhalter)",
       "start_scene": "intro",
-      "scenes": {}
+      "scenes": {
+        "intro": {
+          "type": "ending",
+          "title": "Platzhalter",
+          "background": "images/bg.jpg",
+          "narration": "audio/placeholder.mp3",
+          "ending_title": "Noch kein Inhalt",
+          "ending_text": "Dieses Hörspiel ist noch nicht verfügbar."
+        }
+      }
     },
 
     {
       "id": "story3",
-      "title": "Hörspiel 3",
+      "title": "Hörspiel 3 (Platzhalter)",
       "start_scene": "intro",
-      "scenes": {}
+      "scenes": {
+        "intro": {
+          "type": "ending",
+          "title": "Platzhalter",
+          "background": "images/bg.jpg",
+          "narration": "audio/placeholder.mp3",
+          "ending_title": "Noch kein Inhalt",
+          "ending_text": "Dieses Hörspiel ist noch nicht verfügbar."
+        }
+      }
     },
 
     {
       "id": "story4",
-      "title": "Hörspiel 4",
+      "title": "Hörspiel 4 (Platzhalter)",
       "start_scene": "intro",
-      "scenes": {}
-    },
-
-    {
-      "id": "story5",
-      "title": "Hörspiel 5",
-      "start_scene": "intro",
-      "scenes": {}
+      "scenes": {
+        "intro": {
+          "type": "ending",
+          "title": "Platzhalter",
+          "background": "images/bg.jpg",
+          "narration": "audio/placeholder.mp3",
+          "ending_title": "Noch kein Inhalt",
+          "ending_text": "Dieses Hörspiel ist noch nicht verfügbar."
+        }
+      }
     }
   ]
 }
