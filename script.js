@@ -45,39 +45,69 @@ function loadScene(sceneId) {
 
   currentSceneId = sceneId;
 
+  // Titel & Hintergrund
   sceneTitle.textContent = scene.title || "";
   bgImg.src = scene.background || storyData.app.default_background || "";
 
+  // Audio laden
   player.src = scene.narration || "";
   player.currentTime = 0;
 
+  // Text setzen
   promptText.textContent = scene.prompt || "";
 
+  // Buttons verstecken
+  choicesContainer.innerHTML = "";
+  choicesContainer.style.display = "none";
+
+  // Audio abspielen
+  player.play();
+
+  // Buttons erst nach Audio-Ende anzeigen
+  if (scene.type === "decision") {
+    player.onended = () => {
+      showChoices(scene);
+    };
+  } else if (scene.type === "ending") {
+    player.onended = () => {
+      showEnding(scene);
+    };
+  }
+}
+
+function showChoices(scene) {
   choicesContainer.innerHTML = "";
 
-  if (scene.type === "decision") {
-    const btnA = document.createElement("button");
-    btnA.textContent = scene.choice_a.label;
-    btnA.onclick = () => loadScene(scene.choice_a.next);
-    choicesContainer.appendChild(btnA);
+  const btnA = document.createElement("button");
+  btnA.textContent = scene.choice_a.label;
+  btnA.onclick = () => loadScene(scene.choice_a.next);
 
-    const btnB = document.createElement("button");
-    btnB.textContent = scene.choice_b.label;
-    btnB.onclick = () => loadScene(scene.choice_b.next);
-    choicesContainer.appendChild(btnB);
-  } else if (scene.type === "ending") {
-    const endText = document.createElement("p");
-    endText.textContent = `${scene.ending_title}\n\n${scene.ending_text}`;
-    choicesContainer.appendChild(endText);
+  const btnB = document.createElement("button");
+  btnB.textContent = scene.choice_b.label;
+  btnB.onclick = () => loadScene(scene.choice_b.next);
 
-    const btnRestart = document.createElement("button");
-    btnRestart.textContent = "Zurück zum Start";
-    btnRestart.onclick = () => {
-      showScreen(screenCover);
-      player.pause();
-    };
-    choicesContainer.appendChild(btnRestart);
-  }
+  choicesContainer.appendChild(btnA);
+  choicesContainer.appendChild(btnB);
+
+  choicesContainer.style.display = "block";
+}
+
+function showEnding(scene) {
+  choicesContainer.innerHTML = "";
+
+  const endText = document.createElement("p");
+  endText.textContent = `${scene.ending_title}\n\n${scene.ending_text}`;
+  choicesContainer.appendChild(endText);
+
+  const btnRestart = document.createElement("button");
+  btnRestart.textContent = "Zurück zum Start";
+  btnRestart.onclick = () => {
+    showScreen(screenCover);
+    player.pause();
+  };
+  choicesContainer.appendChild(btnRestart);
+
+  choicesContainer.style.display = "block";
 }
 
 btnStart.addEventListener("click", () => {
