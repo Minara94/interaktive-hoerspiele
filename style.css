@@ -1,88 +1,56 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #050608;
-  color: #f5f5f5;
-}
-
-#app {
-  max-width: 480px;
-  margin: 0 auto;
-  min-height: 100vh;
-  padding: 20px;
-  background: radial-gradient(circle at top, #222 0, #050608 60%);
-}
-
-h1, h2 {
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-family: "Courier New", monospace;
-}
-
-#cover-img {
-  display: block;
-  max-width: 100%;
-  margin: 20px auto;
-  border-radius: 8px;
 }
 
 .screen {
   display: none;
+  padding: 20px;
 }
 
 .screen.active {
   display: block;
 }
 
+.cover-image {
+  width: 80%;
+  max-width: 300px;
+  margin-top: 40px;
+}
+
 button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 14px 18px;
-  font-size: 16px;
+  padding: 12px 20px;
+  margin: 15px;
+  font-size: 18px;
   border: none;
-  border-radius: 6px;
-  background: #f5f5f5;
-  color: #111;
-  font-weight: 600;
+  background: #444;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
 }
 
 button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 0 14px rgba(255, 255, 255, 0.2);
-  background: #ffffff;
+  background: #666;
 }
 
-#bg-img {
+#story-list button {
+  width: 80%;
+  max-width: 300px;
+}
+
+.background {
   width: 100%;
-  max-height: 260px;
+  max-height: 40vh;
   object-fit: cover;
-  border-radius: 8px;
-  margin: 10px 0 15px;
-}
-
-#audio-box {
-  margin: 10px 0;
-}
-
-audio {
-  width: 100%;
-}
-
-#prompt-text {
-  margin-top: 15px;
-  text-align: center;
-  padding: 0 10px;
+  margin-bottom: 20px;
 }
 
 #choices button {
-  width: 100%;
+  display: block;
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto;
 }
