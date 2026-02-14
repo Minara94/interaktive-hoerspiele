@@ -28,7 +28,7 @@ function showScreen(screen) {
 function stopAudio() {
   player.pause();
   player.currentTime = 0;
-  player.onended = null;
+  player.onended = null;   // WICHTIG: verhindert Neustart der Szene
 }
 
 function loadStoryData() {
@@ -80,7 +80,7 @@ function loadScene(sceneId) {
   promptText.textContent = "";
   choicesContainer.innerHTML = "";
 
-  stopAudio();
+  stopAudio(); // verhindert Neustart beim Zurückgehen
   player.src = scene.narration || "";
   player.play();
 
@@ -144,13 +144,16 @@ btnBackCover.addEventListener("click", () => {
 btnBackOne.addEventListener("click", () => {
   stopAudio();
 
-  if (sceneHistory.length > 0) {
-    isGoingBack = true;
-    const previous = sceneHistory.pop();
-    loadScene(previous);
-  } else {
+  // Wenn History leer → direkt zur Auswahl
+  if (sceneHistory.length === 0) {
     showScreen(screenSelect);
+    return;
   }
+
+  // Sonst eine Ebene zurück
+  isGoingBack = true;
+  const previous = sceneHistory.pop();
+  loadScene(previous);
 });
 
 loadStoryData();
