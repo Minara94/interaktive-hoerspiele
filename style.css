@@ -1,139 +1,63 @@
-/* --- GLOBAL --- */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #000;
-  color: #fff;
+  background: black;
+  color: white;
   text-align: center;
 }
 
-h1, h2 {
-  margin-top: 20px;
-  text-shadow: 0 0 12px rgba(255,255,255,0.25);
-}
-
-/* --- SCREENS WITH FADE --- */
 .screen {
   display: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
   padding: 20px;
 }
 
 .screen.active {
   display: block;
-  opacity: 1;
 }
 
-/* --- COVER IMAGE --- */
 #cover-img {
-  width: 85%;
-  max-width: 350px;
+  width: 80%;
+  max-width: 300px;
   margin-top: 40px;
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.7);
 }
 
-/* --- BUTTONS --- */
 button {
-  padding: 15px 25px;
-  margin: 20px auto;
-  font-size: 20px;
+  padding: 12px 20px;
+  margin: 15px;
+  font-size: 18px;
   border: none;
-  background: #333;
+  background: #444;
   color: white;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  width: 85%;
-  max-width: 350px;
 
-  /* Noir-Shadow */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-  transition: background 0.2s ease, transform 0.1s ease;
+  /* dezenter Schatten */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 button:hover {
-  background: #555;
+  background: #666;
 }
 
-button:active {
-  transform: scale(0.97);
+#story-list button {
+  width: 80%;
+  max-width: 300px;
 }
 
-/* --- STORY BACKGROUND IMAGE --- */
 #bg-img {
   width: 100%;
   max-height: 40vh;
   object-fit: cover;
   margin-bottom: 20px;
-
-  /* Noir darkening */
-  filter: brightness(0.65);
 }
 
-/* --- AUDIO PLAYER --- */
-#audio-box audio {
-  width: 90%;
-  max-width: 400px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+#choices button {
+  display: block;
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto;
 }
 
-/* --- PROMPT FADE --- */
-#prompt-text {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  margin: 20px;
-  font-size: 18px;
-}
-
-#prompt-text.show {
-  opacity: 1;
-}
-
-/* --- CHOICES FADE --- */
-#choices {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-#choices.show {
-  opacity: 1;
-}
-
-/* --- STORY LIST WITH THUMBNAILS --- */
-#story-list {
-  margin-top: 20px;
-}
-
-.story-entry {
-  width: 85%;
-  max-width: 350px;
-  margin: 20px auto;
-  padding: 15px;
-  background: #111;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
-}
-
-.story-entry:hover {
-  background: #222;
-}
-
-.story-entry:active {
-  transform: scale(0.97);
-}
-
-.story-thumb {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-.story-title {
-  font-size: 20px;
-  margin: 10px 0;
+#audio-box {
+  margin: 20px 0;
 }
