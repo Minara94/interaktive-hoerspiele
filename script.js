@@ -45,26 +45,13 @@ function generateStoryList() {
   storyList.innerHTML = "";
 
   storyData.stories.forEach(story => {
-    const entry = document.createElement("div");
-    entry.className = "story-entry";
-
-    const img = document.createElement("img");
-    img.className = "story-thumb";
-    img.src = story.cover || "images/cover.jpg";
-
-    const title = document.createElement("div");
-    title.className = "story-title";
-    title.textContent = story.title;
-
-    entry.appendChild(img);
-    entry.appendChild(title);
-
-    entry.onclick = () => {
+    const btn = document.createElement("button");
+    btn.textContent = story.title;
+    btn.onclick = () => {
       currentStory = story;
       startStory();
     };
-
-    storyList.appendChild(entry);
+    storyList.appendChild(btn);
   });
 }
 
@@ -91,10 +78,7 @@ function loadScene(sceneId) {
   bgImg.src = scene.background || storyData.app.default_background;
 
   promptText.textContent = "";
-  promptText.classList.remove("show");
-
   choicesContainer.innerHTML = "";
-  choicesContainer.classList.remove("show");
 
   stopAudio();
   player.src = scene.narration || "";
@@ -103,7 +87,6 @@ function loadScene(sceneId) {
   if (scene.type === "decision") {
     player.onended = () => {
       promptText.textContent = scene.prompt;
-      promptText.classList.add("show");
       showChoices(scene);
     };
   }
@@ -111,7 +94,6 @@ function loadScene(sceneId) {
   if (scene.type === "ending") {
     player.onended = () => {
       promptText.textContent = scene.ending_title;
-      promptText.classList.add("show");
       showEnding(scene);
     };
   }
@@ -130,8 +112,6 @@ function showChoices(scene) {
 
   choicesContainer.appendChild(btnA);
   choicesContainer.appendChild(btnB);
-
-  choicesContainer.classList.add("show");
 }
 
 function showEnding(scene) {
@@ -149,8 +129,6 @@ function showEnding(scene) {
     showScreen(screenSelect);
   };
   choicesContainer.appendChild(btnRestart);
-
-  choicesContainer.classList.add("show");
 }
 
 btnStart.addEventListener("click", () => {
