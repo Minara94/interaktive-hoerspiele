@@ -16,19 +16,23 @@ body {
 }
 
 #cover-img {
-  width: 80%;
-  max-width: 300px;
+  width: 85%;
+  max-width: 350px;
   margin-top: 40px;
 }
 
+h1, h2 {
+  margin-top: 20px;
+}
+
 button {
-  padding: 12px 20px;
-  margin: 15px;
-  font-size: 18px;
+  padding: 15px 25px;
+  margin: 20px;
+  font-size: 20px;
   border: none;
   background: #444;
   color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -37,8 +41,8 @@ button:hover {
 }
 
 #story-list button {
-  width: 80%;
-  max-width: 300px;
+  width: 85%;
+  max-width: 350px;
 }
 
 #bg-img {
@@ -50,7 +54,11 @@ button:hover {
 
 #choices button {
   display: block;
-  width: 80%;
-  max-width: 300px;
-  margin: 10px auto;
+  width: 85%;
+  max-width: 350px;
+  margin: 15px auto;
+}
+
+#audio-box {
+  margin: 20px 0;
 }
