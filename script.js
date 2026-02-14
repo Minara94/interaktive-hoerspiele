@@ -45,13 +45,26 @@ function generateStoryList() {
   storyList.innerHTML = "";
 
   storyData.stories.forEach(story => {
-    const btn = document.createElement("button");
-    btn.textContent = story.title;
-    btn.onclick = () => {
+    const entry = document.createElement("div");
+    entry.className = "story-entry";
+
+    const img = document.createElement("img");
+    img.className = "story-thumb";
+    img.src = story.cover || "images/cover.jpg";
+
+    const title = document.createElement("div");
+    title.className = "story-title";
+    title.textContent = story.title;
+
+    entry.appendChild(img);
+    entry.appendChild(title);
+
+    entry.onclick = () => {
       currentStory = story;
       startStory();
     };
-    storyList.appendChild(btn);
+
+    storyList.appendChild(entry);
   });
 }
 
@@ -67,24 +80,21 @@ function loadScene(sceneId) {
   const scene = currentStory.scenes[sceneId];
   if (!scene) return;
 
-  // Nur pushen, wenn wir NICHT zurückgehen
   if (!isGoingBack && currentSceneId) {
     sceneHistory.push(currentSceneId);
   }
 
-  // Back-Flag zurücksetzen
   isGoingBack = false;
-
   currentSceneId = sceneId;
 
   sceneTitle.textContent = scene.title || "";
   bgImg.src = scene.background || storyData.app.default_background;
 
   promptText.textContent = "";
-  promptText.style.display = "none";
+  promptText.classList.remove("show");
 
   choicesContainer.innerHTML = "";
-  choicesContainer.style.display = "none";
+  choicesContainer.classList.remove("show");
 
   stopAudio();
   player.src = scene.narration || "";
@@ -93,7 +103,7 @@ function loadScene(sceneId) {
   if (scene.type === "decision") {
     player.onended = () => {
       promptText.textContent = scene.prompt;
-      promptText.style.display = "block";
+      promptText.classList.add("show");
       showChoices(scene);
     };
   }
@@ -101,7 +111,7 @@ function loadScene(sceneId) {
   if (scene.type === "ending") {
     player.onended = () => {
       promptText.textContent = scene.ending_title;
-      promptText.style.display = "block";
+      promptText.classList.add("show");
       showEnding(scene);
     };
   }
@@ -121,7 +131,7 @@ function showChoices(scene) {
   choicesContainer.appendChild(btnA);
   choicesContainer.appendChild(btnB);
 
-  choicesContainer.style.display = "block";
+  choicesContainer.classList.add("show");
 }
 
 function showEnding(scene) {
@@ -140,10 +150,8 @@ function showEnding(scene) {
   };
   choicesContainer.appendChild(btnRestart);
 
-  choicesContainer.style.display = "block";
+  choicesContainer.classList.add("show");
 }
-
-// --- BUTTON LOGIK ---
 
 btnStart.addEventListener("click", () => {
   stopAudio();
@@ -163,7 +171,6 @@ btnBackOne.addEventListener("click", () => {
     const previous = sceneHistory.pop();
     loadScene(previous);
   } else {
-    // Keine History mehr → zurück zur Auswahl
     showScreen(screenSelect);
   }
 });
